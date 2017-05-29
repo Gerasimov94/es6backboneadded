@@ -17,7 +17,6 @@ export default class appView extends View {
       'click #new-todo': 'addhandler',
       'click #back': 'clear',
 
-
     };
   }
 
@@ -38,6 +37,7 @@ export default class appView extends View {
 
   clear() {
     this.remove();
+    todos.reset()
   }
 
 
@@ -45,6 +45,7 @@ export default class appView extends View {
     const newtodo = new Todo({ todo: $('#todo-textarea').val() });
      // console.log(newtodo.toJSON())
     todos.add(newtodo);
+    console.log(todos)
   }
 }
 

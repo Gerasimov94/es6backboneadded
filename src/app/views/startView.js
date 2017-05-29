@@ -9,7 +9,6 @@ export default class startView extends Backbone.View {
   get events() {
     return {
       'click #start-button': 'showAlert',
-
     };
   }
 

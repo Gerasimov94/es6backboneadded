@@ -16,6 +16,7 @@ export default class TodosView extends Backbone.View {
     this.template = $('#todos-list-template').html();
 
     this.listenTo(this.model, 'add', this.render);
+    this.listenTo(this.model, 'reset', this.render);
   }
 
   render() {
