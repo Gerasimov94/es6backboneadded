@@ -3,7 +3,7 @@ import { View } from 'backbone';
 import _ from 'underscore';
 import todosCollection from '../collections/todosCollection';
 import Todo from '../models/todoModel';
-import TView from '../views/TView';
+import todoView from '../views/todoView';
 import TodosView from '../views/todosView';
 
 
@@ -20,6 +20,7 @@ export default class appView extends View {
         return {
             'click #new-todo':  'addhandler',
             'click #back':      'clear',
+            
             
         }
     }
@@ -38,7 +39,7 @@ initialize () {
 
   edit() {
     const todo = this.$('#todo-textarea').html();
-    console.log(`editable${todo}`);
+    
   }
 
   clear() {
@@ -49,9 +50,9 @@ initialize () {
     addhandler() {
       
       var newtodo = new Todo({todo: $('#todo-textarea').val()})
-      console.log(newtodo.toJSON())
+     // console.log(newtodo.toJSON())
       todos.add(newtodo)
-      //console.log(todos)
+ 
     }
 }
 

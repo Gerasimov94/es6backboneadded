@@ -2,7 +2,7 @@ import $ from 'jquery';
 import Backbone from 'backbone';
 import _ from 'underscore';
 import TodosCollection from '../collections/todosCollection';
-import  TView  from '../views/TView.js';
+import  todoView  from '../views/todoView.js';
 
 
 export const todos = new TodosCollection();
@@ -21,7 +21,7 @@ constructor(){
   render() {
     this.$el.html('');
   _.each(this.model.toArray(), (todo) => {
-      this.$el.append((new TView(todo)).render().$el);
+      this.$el.append((new todoView(todo)).render().$el);
             
     return this;
     

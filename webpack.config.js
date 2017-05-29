@@ -43,6 +43,7 @@ module.exports = {
     },
 
     module: {
+       
         rules: [
             {
                 test: /\.scss$/,
@@ -77,7 +78,7 @@ module.exports = {
         hot: true,
         open: true
     },
-
+    
     plugins: [
 
         new ExtractTextPlugin({
