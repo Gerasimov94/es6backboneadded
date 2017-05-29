@@ -3,7 +3,7 @@
 
 <head>
 	<link rel="stylesheet" href="bootstrap.css">
-	<link rel="stylesheet" href="../src/app/css/style.css">
+	<link rel="stylesheet" href="bundle.css">
 	<meta charset="UTF-8">
 	<title>to-do</title>
  	
@@ -25,8 +25,8 @@
 		<div class="view">
 
 			<textarea class="form-control" id="todo-textarea"></textarea>
-			<button class="btn btn-danger" id="new-todo">add</button>
-			<a id="back" href="#">Go to back to “Home”</a>
+			<button class="btn btn-danger" id="new-todo">Добавить запись</button>
+			<a id="back" href="#">Назад,на стартовую страницу</a>
 
 	</script>
 
@@ -34,7 +34,7 @@
 	<script type="text/template" id="start-template">
 		<div class="view">
 			<h1>To-do-application</h1>
-			<button class="btn btn-success" id="start-button">СТАРТ</button>
+			<button class="btn btn-success" id="start-button">Старт</button>
 
 	</script>
 
@@ -43,16 +43,16 @@
 		<td><span id="mytodo"><%= todo %></span></td>
 			<div id="block-control">
 				
-				<td><button class="btn btn-warning" id="edit-button">Edit</button>
-					<button class="btn btn-danger" id="delete-button">Delete</button>
+				<td><button class="btn btn-warning" id="edit-button">Изменить</button>
+					<button class="btn btn-danger" id="delete-button">Удалить</button>
 			</div>
 
 			<script type="text/template" id="update-template">
 				<div>
 					<div id="block-update">
 						<input type="text" class="form-control" id="mytodo-update" value=  <%= todo %> >
-						<button class="btn btn-success" id="update-button">Update</button>
-						<button class="btn btn-danger" id="cancel-button">Cancel</button></td>
+						<button class="btn btn-success" id="update-button">Обновить</button>
+						<button class="btn btn-danger" id="cancel-button">Отмена</button></td>
 					</div>
 					<div>
 			</script>

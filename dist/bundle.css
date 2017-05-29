@@ -1,1 +1,68 @@
-body{background:#fff}
+
+body {
+    background: gray;
+    background: radial-gradient(circle at 80px 40px, #f9eec7, peachpuff, wheat);
+    padding: 20px;
+    font-family: sans-serif;
+}
+
+h1{
+    font-family: sans-serif;
+    background: chocolate;
+    border: 3px solid black;
+    width: auto;
+    padding: 10px; 
+    margin: auto; 
+    box-shadow: 4px 4px 5px -2px whitesmoke;
+    padding: 3px 5px;
+    align-content: center;
+    text-align: center;
+     display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
+#start-button{
+ 
+
+    margin-top: 10px; 
+    align-content: center;
+    align-self: center;
+    text-align: center;
+    justify-content: center;
+
+}
+
+ {
+    margin: 0;
+    padding: 0;
+}
+
+body, html {
+    height: 100%;
+}
+
+#block-control{
+    padding :10px 5px;
+}
+
+#block-update{
+    padding :10px 5px;
+    
+}
+
+#todo-textarea{
+   padding :10px 5px;
+   margin-bottom: 10px;
+}
+
+#new-todo{
+    margin-right: 10px;
+    margin-bottom: 10px;
+}
+
+
+
+
+ 
