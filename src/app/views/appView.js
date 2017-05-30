@@ -28,6 +28,7 @@ export default class appView extends View {
       '<textarea class="form-control" id="todo-textarea"></textarea>',
       '<button class="btn btn-danger" id="new-todo">Добавить запись</button>',
       '<a id="back" href="#">Назад,на стартовую страницу</a>',
+      '<a id="showdone" >Показать невыполненные</a>',
       '<div id="todos-list"></div></div></div>'].join(''));
   }
 
@@ -54,9 +55,9 @@ export default class appView extends View {
 
   addhandler() {
     const newtodo = new Todo({ todo: $('#todo-textarea').val() });
-     // console.log(newtodo.toJSON())
+     //console.log(newtodo.toJSON())
     this.collection.add(newtodo);
-    console.log( this.collection);
+    console.log(this.collection);
   }
 }
 

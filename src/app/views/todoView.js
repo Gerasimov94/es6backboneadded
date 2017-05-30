@@ -46,7 +46,14 @@ export default class todoView extends Backbone.View {
   }
 
   done() {
-    if (this.model.get('done') == false)
+
+   
+    this.model.toggle();
+
+
+
+
+   /* if (this.model.get('done') == false)
     {
       this.model.set('done', true);
       $('#isdone').attr('checked', 'checked');
@@ -58,6 +65,17 @@ export default class todoView extends Backbone.View {
       $('#isdone').removeAttr('checked');
       console.log(this.model.get('done'));
     }
+*/  }
+
+  completed() {
+    return this.filter(todo => todo.get('completed'));
+  }
+  remaining() {
+    return this.without(...this.completed());
+  }
+
+  toggleCompleted() {
+    this.model.toggle();
   }
 
   cancel() {

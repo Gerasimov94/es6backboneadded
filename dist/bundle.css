@@ -31,9 +31,12 @@ h1{
     justify-content: center;
 }
 
-#isdone{
-    text-decoration:line-through
+
+
+#isdone:checked ~ #mytodo {
+   text-decoration: line-through
 }
+
 
  {
     margin: 0;

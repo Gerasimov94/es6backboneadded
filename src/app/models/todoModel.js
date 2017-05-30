@@ -8,8 +8,14 @@ export default class Todo extends Model {
   defaults() {
     return {
       todo: '',
-      done: false,
+      completed: false,
     };
+  }
+
+  toggle() {
+    this.save({
+      completed: !this.get('completed'),
+    });
   }
 
 }
