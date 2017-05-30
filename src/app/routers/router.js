@@ -3,6 +3,7 @@ import Backbone from 'backbone';
 import _ from 'underscore';
 import appView from '../views/appView.js';
 import startView from '../views/startView.js';
+import todosCollection from '../collections/todosCollection.js'; 
 
 
 class Router extends Backbone.Router {
@@ -14,7 +15,7 @@ class Router extends Backbone.Router {
       '': 'start',
       list: 'list',
     };
-
+    this.collection = new todosCollection()
     this._bindRoutes();
   }
 
@@ -22,14 +23,14 @@ class Router extends Backbone.Router {
   start() {
     console.log('Route#start was called!');
     const view = new startView();
-    $('#start').html(view.render().$el);
+    $('.container').html(view.render().$el);
   }
 
 
   list() {
     console.log('Route#list was called!');
-    const view = new appView();
-    $('#todolist').html(view.render().$el);
+    const view = new appView({collection: this.collection});
+    $('.container').html(view.render().$el);
   }
 
 

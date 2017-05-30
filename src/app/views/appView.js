@@ -2,15 +2,16 @@ import $ from 'jquery';
 import { View } from 'backbone';
 import _ from 'underscore';
 import Todo from '../models/todoModel';
+import todosView from '../views/todosView';
 
 
-import { todos } from '../views/todosView';
+
 
 
 export default class appView extends View {
 
 
-  get tagName() { 'li'; }
+  get tagName() { return 'tr'; }
 
   get events() {
     return {
@@ -20,14 +21,24 @@ export default class appView extends View {
     };
   }
 
+  get template() {
+    return _.template([
+      '<div id="todolist">',
+      '<div class="view">',
+      '<textarea class="form-control" id="todo-textarea"></textarea>',
+      '<button class="btn btn-danger" id="new-todo">Добавить запись</button>',
+      '<a id="back" href="#">Назад,на стартовую страницу</a>',
+      '<div id="todos-list"></div></div></div>'].join(''));
+  }
+
 
   initialize() {
-    this.template = $('#todos-template').html();
-    this.listenTo(this.model, 'add', this.render);
+    this.listenTo(this.collection, 'add', this.render);
   }
 
   render() {
-    this.$el.html(_.template(this.template));
+    this.$el.html((this.template));
+    new todosView({collection: this.collection, el: this.$('#todos-list')}).render();
     return this;
   }
 
@@ -37,15 +48,15 @@ export default class appView extends View {
 
   clear() {
     this.remove();
-    todos.reset()
+    this.collection.reset();
   }
 
 
   addhandler() {
     const newtodo = new Todo({ todo: $('#todo-textarea').val() });
      // console.log(newtodo.toJSON())
-    todos.add(newtodo);
-    console.log(todos)
+    this.collection.add(newtodo);
+    console.log( this.collection);
   }
 }
 

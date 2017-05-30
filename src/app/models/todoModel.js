@@ -8,6 +8,7 @@ export default class Todo extends Model {
   defaults() {
     return {
       todo: '',
+      done: false,
     };
   }
 

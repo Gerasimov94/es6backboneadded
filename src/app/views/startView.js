@@ -12,15 +12,19 @@ export default class startView extends Backbone.View {
     };
   }
 
+  get template() {
+    return _.template(['<div class="view">',
+      '<h1>To-do-application</h1>',
+      '<button class="btn btn-success" id="start-button">Старт</button>'].join(''));
+  }
+
 
   initialize() {
-    this.template = $('#start-template').html();
-
     this.listenTo(this, 'destroy', this.remove);
   }
 
   render() {
-    this.$el.html(_.template(this.template));
+    this.$el.html(this.template);
     return this;
   }
 

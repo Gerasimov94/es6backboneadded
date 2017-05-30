@@ -31,6 +31,10 @@ h1{
     justify-content: center;
 }
 
+#isdone{
+    text-decoration:line-through
+}
+
  {
     margin: 0;
     padding: 0;
