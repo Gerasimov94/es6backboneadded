@@ -19,12 +19,18 @@ export default class TodosView extends Backbone.View {
 
   renderItem = (todo) => {
     this.$('#todos-item').append((new todoView({model: todo})).render().$el);
+}
+
+  checkrender = (todo) => {
+     
   }
+
 
   render() {
     this.$el.html(this.template);
     this.$('#todos-item').html('');
     this.collection.each(this.renderItem);
+  
   }
 
 }

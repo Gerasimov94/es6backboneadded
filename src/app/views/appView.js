@@ -57,7 +57,7 @@ export default class appView extends View {
     const newtodo = new Todo({ todo: $('#todo-textarea').val() });
      //console.log(newtodo.toJSON())
     this.collection.add(newtodo);
-    console.log(this.collection);
+    //console.log(this.collection);
   }
 }
 

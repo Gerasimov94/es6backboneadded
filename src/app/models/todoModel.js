@@ -7,15 +7,10 @@ export default class Todo extends Model {
 
   defaults() {
     return {
+      priority: 2,
       todo: '',
-      completed: false,
+      done: false,
     };
-  }
-
-  toggle() {
-    this.save({
-      completed: !this.get('completed'),
-    });
   }
 
 }

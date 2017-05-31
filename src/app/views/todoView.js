@@ -16,11 +16,11 @@ export default class todoView extends Backbone.View {
   get template() {
     return _.template([
       '<div id="thisel">',
-      '<input type="checkbox" id="isdone" name="option1" value="a1"',
-      '<td><span id="mytodo"><%= todo %></span></td>',
+      '<input type="checkbox" id ="isdone" name="option1" value="a1" <%= done ?  "checked" : "" %> <%= done ?  "class=isChecked"   : "" %> >',
+      '<td><span id="mytodo"><%= todo %></span>',
       '<div id="block-control">',
-      '<td><button class="btn btn-warning" id="edit-button">Изменить</button>',
-      '<button class="btn btn-danger" id="delete-button">Удалить</button></div>'].join(''));
+      '<button class="btn btn-warning" id="edit-button">Изменить</button>',
+      '<button class="btn btn-danger" id="delete-button">Удалить</button></div></div></td>'].join(''));
   }
 
   get events() {
@@ -46,37 +46,10 @@ export default class todoView extends Backbone.View {
   }
 
   done() {
-
-   
-    this.model.toggle();
-
-
-
-
-   /* if (this.model.get('done') == false)
-    {
-      this.model.set('done', true);
-      $('#isdone').attr('checked', 'checked');
-      console.log(this.model.get('done'));
-    }
-    else if (this.model.get('done') == true)
-    {
-      this.model.set('done', false);
-      $('#isdone').removeAttr('checked');
-      console.log(this.model.get('done'));
-    }
-*/  }
-
-  completed() {
-    return this.filter(todo => todo.get('completed'));
-  }
-  remaining() {
-    return this.without(...this.completed());
+    this.model.set('done', !this.model.get('done'));
+    console.log(this.model.get('done'));
   }
 
-  toggleCompleted() {
-    this.model.toggle();
-  }
 
   cancel() {
     this.render();

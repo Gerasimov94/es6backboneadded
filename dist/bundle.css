@@ -37,6 +37,17 @@ h1{
    text-decoration: line-through
 }
 
+#r1{
+    background-color: green;
+}
+
+#r2{
+    background-color: orange;
+}
+
+#r3{
+    color: red;
+}
 
  {
     margin: 0;
