@@ -3,7 +3,6 @@ import Backbone from 'backbone';
 import _ from 'underscore';
 import updateTodo from '../views/updateView';
 
-
 export default class todoView extends Backbone.View {
 
   constructor(options) {
@@ -17,7 +16,7 @@ export default class todoView extends Backbone.View {
     return _.template([
       '<div id="thisel">',
       '<input type="checkbox" id ="isdone" name="option1" value="a1" <%= done ?  "checked" : "" %> <%= done ?  "class=isChecked"   : "" %> >',
-      '<td><span id="mytodo"><%= todo %></span>',
+      '<td><span style="background-color: <%= this.getColorForTodo(priority) %>" id="mytodo"><%= todo %></span>',
       '<div id="block-control">',
       '<button class="btn btn-warning" id="edit-button">Изменить</button>',
       '<button class="btn btn-danger" id="delete-button">Удалить</button></div></div></td>'].join(''));
@@ -60,5 +59,13 @@ export default class todoView extends Backbone.View {
     this.remove();
   }
 
-
+  getColorForTodo = (priority) => {
+    if (priority === 1) {
+      return 'red';
+    }
+    if (priority === 2) {
+      return 'orange';
+    }
+    return 'green';
+  }
 }

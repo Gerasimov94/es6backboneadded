@@ -23,9 +23,9 @@ export default class updatetView extends Backbone.View {
       '<input type="text" class="form-control" id="mytodo-update" value=  <%= todo %> >',
       '<select id="todo__priority">',
       '<optgroup label="Приоритет задачи">',
-      '<option <%= (priotrity = 1) ? "selected" : "" %>  value="r1" >Высокий : 1 </option>',
-      '<option <%= (priotrity = 2) ? "selected" : "" %>  value="r2" >Средний : 2 </option>  ',
-      '<option <%= (priotrity = 3) ? "selected" : "" %>  value="r3" >Низкий : 3 </option>',
+      '<option value="r1" >Высокий : 1 </option>',
+      '<option value="r2" selected >Средний : 2 </option>  ',
+      '<option value="r3" >Низкий : 3 </option>',
       '</optgroup></select>',
       '<button class="btn btn-success" id="update-button">Обновить</button>',
       '<button class="btn btn-danger" id="cancel-button">Отмена</button></td>',
@@ -35,7 +35,6 @@ export default class updatetView extends Backbone.View {
     this.listenTo(this, 'destroy', this.remove);
     this.listenTo(this, 'change', this.render);
     this.listenTo(this.model, 'change', this.render);
-    this.listenTo(this.model, 'change', console.log(this.model.get('priority')));
   }
 
   render() {
@@ -51,16 +50,19 @@ export default class updatetView extends Backbone.View {
     const id = event.target.value;
     switch (id) {
       case 'r1':
-        this.model.set('priotity', 1);
-        console.log(this.model.get('priotity'));
+        this.model.set('priority', 1);
+        console.log(this.model.get('priority'));
+        console.log(this.model);
         break;
       case 'r2':
-        this.model.set('priotity', 2);
-        console.log(this.model.get('priotity'));
+        this.model.set('priority', 2);
+        console.log(this.model.get('priority'));
+        console.log(this.model);
         break;
       case 'r3':
-        this.model.set('priotity', 3);
-        console.log(this.model.get('priotity'));
+        this.model.set('priority', 3);
+        console.log(this.model.get('priority'));
+        console.log(this.model);
         break;
       default:
         console.log('мимо');

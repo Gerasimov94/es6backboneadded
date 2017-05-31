@@ -33,12 +33,8 @@ h1{
 
 
 
-#isdone:checked ~ #mytodo {
+#isdone:checked #mytodo {
    text-decoration: line-through
-}
-
-#r1{
-    background-color: green;
 }
 
 #r2{
