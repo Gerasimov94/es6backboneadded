@@ -9,6 +9,7 @@ export default class TodosView extends Backbone.View {
     super(options);
     this.listenTo(this.collection, 'add', this.renderItem);
     this.listenTo(this.collection, 'reset', this.render);
+    this.listenTo(this.collection, 'change', this.render);
   }
 
   get template() {
@@ -19,10 +20,12 @@ export default class TodosView extends Backbone.View {
 
   renderItem = (todo) => {
     this.$('#todos-item').append((new todoView({model: todo})).render().$el);
+    //console.log(this.collection.pluck('priority').sort())
+
 }
 
-  checkrender = (todo) => {
-     
+  comparator = (todo) =>{
+     todo.get('priority');
   }
 
 

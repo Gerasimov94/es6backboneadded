@@ -3,7 +3,7 @@ import Backbone from 'backbone';
 import _ from 'underscore';
 
 
-export default class updatetView extends Backbone.View {
+export default class updateView extends Backbone.View {
 
   constructor(options) {
     super(options);
@@ -17,10 +17,10 @@ export default class updatetView extends Backbone.View {
     };
   }
 
-  initialize() {
-    this.template = _.template([
+  get template() {
+    return _.template([
       '<div id="block-update">',
-      '<input type="text" class="form-control" id="mytodo-update" value=  <%= todo %> >',
+      '<input  class="form-control" id="mytodo-update" value=  "<%= todo %> ">',
       '<select id="todo__priority">',
       '<option disabled selected >Выберите приоритет</option>',
       '<option value="r1" >Высокий : 1 </option>',
@@ -30,8 +30,11 @@ export default class updatetView extends Backbone.View {
       '<button class="btn btn-success" id="update-button">Обновить</button>',
       '<button class="btn btn-danger" id="cancel-button">Отмена</button></td>',
       '</div>',
-    ].join(''));
+    ].join(''))
+;
+  }
 
+  initialize() {
     this.listenTo(this, 'destroy', this.remove);
     this.listenTo(this, 'change', this.render);
     this.listenTo(this.model, 'change', this.render);
