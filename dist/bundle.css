@@ -22,7 +22,7 @@ h1{
     justify-content: center;
     height: 100%;
 }
-
+/*Buttons*/
 #start-button{
     margin-top: 10px; 
     align-content: center;
@@ -30,12 +30,15 @@ h1{
     text-align: center;
     justify-content: center;
 }
-
-
-
-#isdone:checked #mytodo {
-   text-decoration: line-through
+#update-button{
+    margin: 0 5px; 
 }
+
+#edit-button{
+    margin: 0 5px; 
+}
+
+/*Buttons*/
 
 #r2{
     background-color: orange;
@@ -43,6 +46,22 @@ h1{
 
 #r3{
     color: red;
+}
+
+#filter{
+    margin: 10px 0;
+    padding : 5px ;
+    width: 345px;
+}
+
+.mytodo{
+    border: 2px groove black;
+    margin:0 5px;
+    padding: 5px ;
+}
+
+.block-control__elem{
+    margin-bottom: 15px;
 }
 
  {
@@ -54,18 +73,14 @@ body, html {
     height: 100%;
 }
 
-#block-control{
-    padding :10px 5px;
-}
-
-#block-update{
-    padding :10px 5px;
-    
-}
-
 #todo-textarea{
-   padding :10px 5px;
    margin-bottom: 10px;
+}
+
+#mytodo-update{
+    margin: 10px 0;
+    padding : 5px ;
+    width: 345px;
 }
 
 #new-todo{

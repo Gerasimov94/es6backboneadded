@@ -18,7 +18,6 @@ export default class startView extends Backbone.View {
       '<button class="btn btn-success" id="start-button">Старт</button>'].join(''));
   }
 
-
   initialize() {
     this.listenTo(this, 'destroy', this.remove);
   }

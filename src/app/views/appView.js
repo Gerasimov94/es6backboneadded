@@ -3,10 +3,7 @@ import { View } from 'backbone';
 import _ from 'underscore';
 import Todo from '../models/todoModel';
 import todosView from '../views/todosView';
-
-
-
-
+import filterView from '../views/filterView';
 
 export default class appView extends View {
 
@@ -28,7 +25,7 @@ export default class appView extends View {
       '<textarea class="form-control" id="todo-textarea"></textarea>',
       '<button class="btn btn-danger" id="new-todo">Добавить запись</button>',
       '<a id="back" href="#">Назад,на стартовую страницу</a>',
-      '<a id="showdone" >Показать невыполненные</a>',
+      '<div id="filter-box"></div>',
       '<div id="todos-list"></div></div></div>'].join(''));
   }
 
@@ -39,6 +36,7 @@ export default class appView extends View {
 
   render() {
     this.$el.html((this.template));
+    new filterView({el: this.$('#filter-box')}).render();
     new todosView({collection: this.collection, el: this.$('#todos-list')}).render();
     return this;
   }
@@ -54,10 +52,15 @@ export default class appView extends View {
 
 
   addhandler() {
-    const newtodo = new Todo({ todo: $('#todo-textarea').val() });
-     //console.log(newtodo.toJSON())
-    this.collection.add(newtodo);
-    //console.log(this.collection);
+    if ($('#todo-textarea').val() !== ''){
+        const newtodo = new Todo({ todo: $('#todo-textarea').val() });
+        this.collection.add(newtodo);
+    }
+    else{
+        alert('Заметка не может быть пустой!')
+    }
+    
+    
   }
 }
 

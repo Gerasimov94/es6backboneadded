@@ -7,7 +7,7 @@ export default class updatetView extends Backbone.View {
 
   constructor(options) {
     super(options);
-    this.el = this.$('#mytodo').html();
+    this.el = this.$('.mytodo').html();
   }
 
   get events() {
@@ -22,9 +22,9 @@ export default class updatetView extends Backbone.View {
       '<div id="block-update">',
       '<input type="text" class="form-control" id="mytodo-update" value=  <%= todo %> >',
       '<select id="todo__priority">',
-      '<optgroup label="Приоритет задачи">',
+      '<option disabled selected >Выберите приоритет</option>',
       '<option value="r1" >Высокий : 1 </option>',
-      '<option value="r2" selected >Средний : 2 </option>  ',
+      '<option value="r2" >Средний : 2 </option>  ',
       '<option value="r3" >Низкий : 3 </option>',
       '</optgroup></select>',
       '<button class="btn btn-success" id="update-button">Обновить</button>',
@@ -51,18 +51,12 @@ export default class updatetView extends Backbone.View {
     switch (id) {
       case 'r1':
         this.model.set('priority', 1);
-        console.log(this.model.get('priority'));
-        console.log(this.model);
         break;
       case 'r2':
         this.model.set('priority', 2);
-        console.log(this.model.get('priority'));
-        console.log(this.model);
         break;
       case 'r3':
         this.model.set('priority', 3);
-        console.log(this.model.get('priority'));
-        console.log(this.model);
         break;
       default:
         console.log('мимо');

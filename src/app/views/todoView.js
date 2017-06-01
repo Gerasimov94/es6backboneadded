@@ -13,13 +13,19 @@ export default class todoView extends Backbone.View {
   get tagName() { return 'tr'; }
 
   get template() {
-    return _.template([
-      '<div id="thisel">',
-      '<input type="checkbox" id ="isdone" name="option1" value="a1" <%= done ?  "checked" : "" %> <%= done ?  "class=isChecked"   : "" %> >',
-      '<td><span style="background-color: <%= this.getColorForTodo(priority) %>" id="mytodo"><%= todo %></span>',
-      '<div id="block-control">',
-      '<button class="btn btn-warning" id="edit-button">Изменить</button>',
-      '<button class="btn btn-danger" id="delete-button">Удалить</button></div></div></td>'].join(''));
+    return _.template([ 
+      '<td>',
+        '<div id="block-control">',
+          '<div class = "block-control__elem">',
+            '<input type="checkbox" id ="isdone" name="option1" value="a1" <%= done ?  "checked" : "" %>  >',
+            '<span style="background-color: <%= this.getColorForTodo(priority)%> <%= done ? " ;text-decoration: line-through " : "" %> "  class="mytodo"> <%= todo %> </span>',
+          '</div>',
+          '<div class = "block-control__elem">',
+            '<button class="btn btn-warning" id="edit-button">Изменить</button>',
+            '<button class="btn btn-danger" id="delete-button">Удалить</button>',
+          '</div>',  
+        '</div>', 
+      '</td>'].join(''));
   }
 
   get events() {
@@ -39,9 +45,7 @@ export default class todoView extends Backbone.View {
   }
 
   edit() {
-    const edit = new updateTodo({ model: this.model });
-    this.$('#block-control').remove();
-    this.$('#mytodo').html(edit.render().$el);
+    const edit = new updateTodo({ model: this.model ,el :  this.$('#block-control') }).render().$el;
   }
 
   done() {
@@ -68,4 +72,5 @@ export default class todoView extends Backbone.View {
     }
     return 'green';
   }
+
 }
