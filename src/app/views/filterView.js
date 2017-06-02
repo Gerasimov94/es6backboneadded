@@ -9,7 +9,6 @@ export default class filterView extends Backbone.View {
 
   constructor(options) {
     super(options);
-    this.model = new Filter();
     this.listenTo(this.collection, 'add', this.search);
   }
 
@@ -17,11 +16,23 @@ export default class filterView extends Backbone.View {
     return {
       'keyup #filter': 'search',
       'click #clear__filter': 'dropFilter',
+      'change #priority__filter': 'filterPriority',
     };
   }
 
   get template() {
-    return _.template('<input type="search" id="filter" placeholder="Введите текст для поиска..."> <button class="btn btn-danger" id="clear__filter">Очистить фильтр</button>');
+    return _.template([
+      '<input type="search" id="filter" placeholder="Введите текст для поиска...">',
+      '<select id="priority__filter" ',
+      '<optgroup>',
+      '<option selected>Все</option>',
+      '<option value="r1" >Высокий : 1 </option>',
+      '<option value="r2" >Средний : 2 </option>  ',
+      '<option value="r3" >Низкий : 3 </option>',
+      '</optgroup></select>',
+      '</div>',
+    ].join(''));
+
   }
 
   render() {
@@ -56,20 +67,27 @@ export default class filterView extends Backbone.View {
   search(event){
     if ($('#filter').val() !== ''){
     this.model.set('filter', $('#filter').val());
-    this.collection.trigger('filter', this.model.get('filter'))
   }
   else{
     this.model.set('filter', '');
-    this.collection.trigger('filter', this.model.get('filter'))
   }
-    
-    console.log('filtered')
   }
 
-
-  dropFilter() {
-    this.model.set('filter', '');
-    console.log(this.model.get('filter'));
+   filterPriority(event) {
+    const id = event.target.value;
+    switch (id) {
+      case 'r1':
+        this.model.set('filter_priority', 1);
+        break;
+      case 'r2':
+        this.model.set('filter_priority', 2);
+        break;
+      case 'r3':
+        this.model.set('filter_priority', 3);
+        break;
+      default:
+        console.log('мимо');
+    }
   }
 
 

@@ -8,7 +8,6 @@ import todosView from '../views/todosView';
 class Application {
 
   constructor() {
-    new todosView();
     new Router();
     Backbone.history.start();
   }

@@ -7,8 +7,8 @@ export default class TodosView extends Backbone.View {
 
   constructor(options) {
     super(options);
-    this.listenTo(this.collection, 'filter', this.render);
-    //this.listenTo(this.collection, 'sort', this.render);
+    this.listenTo(this.model, 'change', this.render);
+    this.listenTo(this.collection, 'sort', this.render);
     //this.listenTo(this.collection, 'change', () => this.collection.sort());
     
   }
@@ -21,14 +21,14 @@ export default class TodosView extends Backbone.View {
 
   renderItem = (todo) => {
     this.$('#todos-item').append((new todoView({model: todo})).render().$el);
-    //console.log(this.collection.pluck('priority').sort())
 }
 
-  render(filterValue = '') {
+  render() {
+/*Условие рендера*/
     this.$el.html(this.template);
     this.$('#todos-item').html('');
      _.chain(this.collection.models)
-      .filter((model) => (model.get('todo').includes(filterValue)))
+      .filter((model) => model.get('title').includes(this.model.get('filter')))
       .each(this.renderItem);        
   }
 

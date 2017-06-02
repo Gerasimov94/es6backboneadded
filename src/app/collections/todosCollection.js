@@ -5,11 +5,11 @@ import  appView  from '../views/appView.js';
 import  Todo  from '../models/todoModel.js';
 
 export default class TodosCollection extends Backbone.Collection{
-
-
-  comparator = (todo) =>{
-     todo.get('priority');
-  }
+constructor(options){
+    super(options);
+    this.comparator = 'priority'
+    this.listenTo(this,'change', () => this.sort())
+}
 
 }
 

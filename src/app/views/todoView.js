@@ -18,7 +18,7 @@ export default class todoView extends Backbone.View {
         '<div id="block-control">',
           '<div class = "block-control__elem">',
             '<input type="checkbox" id ="isdone" name="option1" value="a1" <%= done ?  "checked" : "" %>  >',
-            '<span style="background-color: <%= this.getColorForTodo(priority)%> <%= done ? " ;text-decoration: line-through " : "" %> "  class="mytodo"> <%= todo %> </span>',
+            '<span style="background-color: <%= this.getColorForTodo(priority)%> <%= done ? " ;text-decoration: line-through " : "" %> "  class="mytodo"> <%= title %> </span>',
           '</div>',
           '<div class = "block-control__elem">',
             '<button class="btn btn-warning" id="edit-button">Изменить</button>',

@@ -20,8 +20,9 @@ export default class updateView extends Backbone.View {
   get template() {
     return _.template([
       '<div id="block-update">',
-      '<input  class="form-control" id="mytodo-update" value=  "<%= todo %> ">',
+      '<input  class="form-control" id="mytodo-update" value=  "<%= title %> ">',
       '<select id="todo__priority">',
+      '<optgroup>',
       '<option disabled selected >Выберите приоритет</option>',
       '<option value="r1" >Высокий : 1 </option>',
       '<option value="r2" >Средний : 2 </option>  ',
@@ -46,7 +47,7 @@ export default class updateView extends Backbone.View {
   }
 
   update() {
-    this.model.set('todo', $('#mytodo-update').val());
+    this.model.set('title', $('#mytodo-update').val());
   }
 
   updatePriority(event) {

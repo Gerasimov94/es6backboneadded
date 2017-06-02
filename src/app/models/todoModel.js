@@ -8,7 +8,7 @@ export default class Todo extends Model {
   defaults() {
     return {
       priority: 2,
-      todo: '',
+      title: '',
       done: false,
     };
   }

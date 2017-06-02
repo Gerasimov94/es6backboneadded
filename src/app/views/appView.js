@@ -36,14 +36,14 @@ export default class appView extends View {
 
   render() {
     this.$el.html((this.template));
-    new todosView({collection: this.collection, el: this.$('#todos-list')}).render();
-    new filterView({collection: this.collection, el: this.$('#filter-box')}).render();
+    new todosView({collection: this.collection, el: this.$('#todos-list'), model: this.model }).render();
+    new filterView({collection: this.collection, el: this.$('#filter-box'), model: this.model }).render();
 
     return this;
   }
 
   edit() {
-    const todo = this.$('#todo-textarea').html();
+    const title = this.$('#todo-textarea').html();
   }
 
   clear() {
@@ -54,7 +54,7 @@ export default class appView extends View {
 
   addhandler() {
     if ($('#todo-textarea').val() !== ''){
-        const newtodo = new Todo({ todo: $('#todo-textarea').val() });
+        const newtodo = new Todo({ title: $('#todo-textarea').val() });
         this.collection.add(newtodo);
     }
     else{
