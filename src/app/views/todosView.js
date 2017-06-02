@@ -29,6 +29,7 @@ export default class TodosView extends Backbone.View {
     this.$('#todos-item').html('');
      _.chain(this.collection.models)
       .filter((model) => model.get('title').includes(this.model.get('filter')))
+      .filter( (model)=> {if model.get('priority') == this.model.get('filter_priority') } )
       .each(this.renderItem);        
   }
 
