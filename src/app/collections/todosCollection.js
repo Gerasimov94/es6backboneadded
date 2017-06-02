@@ -6,6 +6,11 @@ import  Todo  from '../models/todoModel.js';
 
 export default class TodosCollection extends Backbone.Collection{
 
+
+  comparator = (todo) =>{
+     todo.get('priority');
+  }
+
 }
 
 

@@ -36,8 +36,9 @@ export default class appView extends View {
 
   render() {
     this.$el.html((this.template));
-    new filterView({collection: this.collection, el: this.$('#filter-box')}).render();
     new todosView({collection: this.collection, el: this.$('#todos-list')}).render();
+    new filterView({collection: this.collection, el: this.$('#filter-box')}).render();
+
     return this;
   }
 

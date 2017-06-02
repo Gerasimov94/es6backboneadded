@@ -3,16 +3,14 @@ import Backbone from 'backbone';
 import _ from 'underscore';
 import Filter from '../models/filterModel';
 import todosCollection from '../collections/todosCollection.js';
+import todosView from '../views/todosView';
 
 export default class filterView extends Backbone.View {
 
   constructor(options) {
     super(options);
     this.model = new Filter();
-    this.listenTo(this.collection, 'add', console.log(this.collection));
-    this.listenTo(this.collection, 'add', this.render);
-    this.listenTo(this.model, 'change', this.search);
-    
+    this.listenTo(this.collection, 'add', this.search);
   }
 
   get events() {
@@ -31,25 +29,47 @@ export default class filterView extends Backbone.View {
     return this;
   }
 
-  search(event) {
-        const filtered = new todosCollection();
-        this.model.set('filter', $('#filter').val());
-        console.log(`Значение фильтра,${this.model.get('filter')}`);
-        if (this.model.get('filter') !== '') {
-        this.collection.forEach((model) => {
-          if (model.get('todo').includes(this.model.get('filter'))) {
-            filtered.add(model);
-          }
-            this.collection.reset(filtered.models)
-        }); 
+  /*search(event) {
+    const filtered = new todosCollection();
+    this.model.set('filter', $('#filter').val());
+    console.log(`Значение фильтра,${this.model.get('filter')}`);
+    if (this.model.get('filter') !== '') {
+      this.collection.forEach((model) => {
+        if (model.get('todo').includes(this.model.get('filter'))) {
+          model.set('isfiltered', true);
+          console.log(model.toJSON());
+          filtered.add(model);
+        } else {
+          model.set('isfiltered', false);
+          console.log(model.toJSON());
+        }
+      });
+      console.log(filtered);
+      if (filtered.length > 0) {
+        var tempView = new todosView({ collection: filtered, el: this.$('#todos-list') }).render();
+      } else {
+        new todosView({ collection: this.collection, el: this.$('#todos-list') }).render();
+      }
+    }
+  }*/
+
+  search(event){
+    if ($('#filter').val() !== ''){
+    this.model.set('filter', $('#filter').val());
+    this.collection.trigger('filter', this.model.get('filter'))
   }
-  
-}
+  else{
+    this.model.set('filter', '');
+    this.collection.trigger('filter', this.model.get('filter'))
+  }
+    
+    console.log('filtered')
+  }
 
 
   dropFilter() {
     this.model.set('filter', '');
-    console.log(this.model.get('filter'))
+    console.log(this.model.get('filter'));
   }
 
 
