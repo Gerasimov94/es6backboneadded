@@ -23,8 +23,8 @@ export default class filterView extends Backbone.View {
   get template() {
     return _.template([
       '<input type="search" id="filter" placeholder="Введите текст для поиска...">',
-      '<select id="priority__filter" ',
-      '<optgroup>',
+      '<select id="priority__filter"> ',
+      '<optgroup> label="Фильтр по приоритету"',
       '<option selected>Все</option>',
       '<option value="r1" >Высокий : 1 </option>',
       '<option value="r2" >Средний : 2 </option>  ',
@@ -86,7 +86,8 @@ export default class filterView extends Backbone.View {
         this.model.set('filter_priority', 3);
         break;
       default:
-        console.log('мимо');
+        this.model.set('filter_priority', 0);
+        console.log('вся коллекция')
     }
   }
 
