@@ -24,11 +24,10 @@ h1{
 }
 /*Buttons*/
 #start-button{
-    margin-top: 10px; 
-    align-content: center;
-    align-self: center;
-    text-align: center;
-    justify-content: center;
+ width: 200px; /* Ширина элемента в пикселах */
+    padding: 10px; /* Поля вокруг текста */
+    margin: auto; /* Выравниваем по центру */
+    background: #fc0; /* Цвет фона */
 }
 #update-button{
     margin: 0 5px; 
@@ -51,6 +50,7 @@ h1{
 #filter{
     margin: 10px 0;
     padding : 5px ;
+    margin-right: 5px;
     width: 345px;
 }
 
@@ -88,10 +88,6 @@ body, html {
     margin-bottom: 10px;
 }
 
-#priority__filter{
-    margin: 10px 0;
-    padding : 5px ;
-}
 
 
 

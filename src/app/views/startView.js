@@ -8,7 +8,7 @@ export default class startView extends Backbone.View {
 
   get events() {
     return {
-      'click #start-button': 'showAlert',
+      'click #start-button': 'start',
     };
   }
 
@@ -27,10 +27,8 @@ export default class startView extends Backbone.View {
     return this;
   }
 
-  showAlert() {
-    const hiddenRoute = new Router();
-    hiddenRoute.navigate('list', { trigger: true });
-    this.remove();
+  start() {
+   Backbone.trigger('change_route');  
   }
 
 }

@@ -17,6 +17,7 @@ class Router extends Backbone.Router {
     };
     this.collection = new todosCollection();
     this.filterModel= new Filter();
+    this.listenTo(Backbone,'change_route',this.startRoute)
     this._bindRoutes();
   }
 
@@ -32,6 +33,10 @@ class Router extends Backbone.Router {
     console.log('Route#list was called!');
     const view = new appView({collection: this.collection,model : this.filterModel});
     $('.container').html(view.render().$el);
+  }
+
+  startRoute(){
+    this.navigate("#list ",{trigger:true})
   }
 
 

@@ -37,9 +37,6 @@ export default class TodosView extends Backbone.View {
         else if (this.model.get('filter_priority')== 0){
           return model;
         }
-        else{
-          
-        }
       })
       .each(this.renderItem);        
   }
